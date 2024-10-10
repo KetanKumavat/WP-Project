@@ -7,9 +7,8 @@ include 'cart.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['item'])) {
     removeFromCart($_POST['item']);
-    // header('Location: ../frontend/cart.html');
-    exit();
+    echo json_encode(['status' => 'success', 'message' => 'Item removed from cart']);
 } else {
-    echo "Invalid request method or missing item.";
+    echo json_encode(['status' => 'error', 'message' => 'Invalid request method or missing item']);
 }
 ?>
